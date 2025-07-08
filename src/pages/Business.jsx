@@ -1,14 +1,22 @@
-import { NavLink, Routes, Route } from 'react-router-dom';
+import { NavLink, Routes, Route, useLocation } from 'react-router-dom';
 import Rentcar from './business/Rentcar';
 import Purchase from './business/Purchase';
 import Export from './business/Export';
 import Ads from './business/Ads';
 
 const Business = () => {
+  const location = useLocation();
+  const isIndex = location.pathname === '/business';
+
   return (
     <>
       <nav className="tab-menu">
-        <NavLink to="rentcar">자동차 금융 컨설팅</NavLink>
+        <NavLink
+          to="rentcar"
+          className={({ isActive }) => (isActive || isIndex ? 'active' : undefined)}
+        >
+          자동차 금융 컨설팅
+        </NavLink>
         <NavLink to="purchase">전국매입</NavLink>
         <NavLink to="export">해외수출</NavLink>
         <NavLink to="ads">광고마케팅</NavLink>
