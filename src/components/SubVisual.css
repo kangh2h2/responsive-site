@@ -1,0 +1,29 @@
+
+
+/* SubVisual.css */
+.sub-visual.about.bg-about {
+    background-image: url('/public/images/bg_about.png');
+}
+.sub-visual.business.bg-business {
+    background-image: url('/public/images/bg_business.png');
+}
+
+/* 공통 레이아웃 */
+.sub-visual {
+    padding: 28vh 0 12vh;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+.sub-visual ul li a span{
+    display: inline-block;
+    margin: 0 16px 0 8px;
+    font-size: clamp(11px, 2vw, 16px);
+    font-weight: 600;
+    color: var(--whiteColor);
+}
+.sub-visual ul li h1{
+    margin-left: 3vw;
+    font-size: clamp(24px, 6vw, 40px);
+}
+

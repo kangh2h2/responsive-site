@@ -1,0 +1,95 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
+
+
+const menuItems = [
+    { name: 'KS소개', path: '/About' },
+    { name: '사업분야', path: '/Business' },
+    { name: '뉴스룸', path: '/News' },
+    { name: '채용', path: '/Hr' }
+];
+
+const Header = () => {
+  const [isMobile, setIsMobile] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+  
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+  
+    // 최초 실행
+    handleResize();
+    handleScroll();
+  
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
+  
+    // 클린업: 한 번에 모두 제거
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
+  const handleMenuToggle = () => setMenuOpen((prev) => !prev);
+
+  const Menu = () => (
+    <ul className='flex-center'>
+      {menuItems.map((item, idx) => (
+        <li key={idx}>
+            <Link to={item.path} onClick={() => setMenuOpen(false)}
+              className={item.name === "채용" ? 'bg-m' : ''}>
+                {item.name}
+            </Link>
+        </li>
+      ))}
+    </ul>
+  );
+
+  if (isMobile === null) return null; // 렌더 보호
+
+  return (
+    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <nav className={isMobile ? 'mobile-nav inner' : 'desktop-nav inner flex-center'}>
+        <Link to="/" className="logo"><img className="img-responsive" src='/images/logo.svg' alt="로고"></img></Link>
+        {isMobile ? (
+          <button
+            className={`hamburger-menu ${menuOpen ? 'open' : ''}`}
+            onClick={handleMenuToggle}
+            aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
+            aria-expanded={menuOpen}
+            >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        ) : (
+          <div className="menu"><Menu /></div>
+        )}
+      </nav>
+
+      
+      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+        <Menu />
+      </div>
+
+
+      <button className="btn-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        ↑
+      </button>
+      
+    </header>
+
+    
+  );
+};
+
+export default Header;
