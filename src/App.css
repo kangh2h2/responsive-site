@@ -84,6 +84,18 @@ strong, .ex-bold{font-weight: 700;}
     overflow: hidden;
 }
 
+.tab-menu {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.tab-menu a.active {
+    color: var(--mainColor);
+    font-weight: 600;
+    border-bottom: 2px solid var(--mainColor);
+}
+
   
 
 @media (max-width:767px) {
