@@ -23,8 +23,8 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
         <Route path="/business/*" element={<Business />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/hr" element={<Hr />} />
+        <Route path="/news/*" element={<News />} />
+        <Route path="/hr/*" element={<Hr />} />
       </Routes>
       <Footer />
     </BrowserRouter>

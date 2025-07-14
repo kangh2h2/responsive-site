@@ -11,6 +11,9 @@
     justify-content: space-between;
     height: 100%;
 }
+.header.navy{
+    background: #001F50;
+}
 .header .menu ul{
     gap: 4vw;
 }
@@ -116,6 +119,7 @@
 
 
 @media (max-width:767px) {
+    .header,
     .header nav,
     .header.scrolled{
         height: 60px;

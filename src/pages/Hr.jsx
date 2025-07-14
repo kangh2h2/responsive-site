@@ -1,4 +1,5 @@
-import { NavLink, Routes, Route } from 'react-router-dom';
+import './Hr.css';
+import { NavLink, Routes, Route, Navigate } from 'react-router-dom';
 import Info from './hr/Info';
 import List from './hr/List';
 
@@ -7,7 +8,7 @@ import SubVisual from "../components/SubVisual";
 const Hr = () => {
   return (
     <>
-      <SubVisual title="채용" type="hr" bgClass="bg-hr" />
+      <SubVisual title="채용" type="hr" bgClass="bg-hr sub-board" />
 
       <nav className="tab-menu">
         <div className="inner">
@@ -17,6 +18,7 @@ const Hr = () => {
       </nav>
 
       <Routes>
+        <Route index element={<Navigate to="info" replace />} />
         <Route path="info" element={<Info />} />
         <Route path="list" element={<List />} />
       </Routes>

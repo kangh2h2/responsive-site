@@ -2,9 +2,14 @@ import React from 'react'
 
 function Info() {
     return (
-        <div>
-            ㅇㅇㅇㅇㅇㅇ
-        </div>
+        <>
+            <div className="hr">
+                <section className="info-content ic-01">
+                    <div className="inner"></div>
+                </section>
+            </div>
+            
+        </>
     )
 }
 

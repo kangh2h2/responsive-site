@@ -1,13 +1,3 @@
-
-
-/* SubVisual.css */
-.sub-visual.about.bg-about {
-    background-image: url('/public/images/bg_about.png');
-}
-.sub-visual.business.bg-business {
-    background-image: url('/public/images/bg_business.png');
-}
-
 /* 공통 레이아웃 */
 .sub-visual {
     padding: 28vh 0 12vh;
@@ -23,14 +13,64 @@
     color: var(--whiteColor);
 }
 .sub-visual ul li h1{
-    margin-left: 3vw;
+    margin-left: 2vw;
     font-size: clamp(30px, 6vw, 40px);
 }
 
+.sub-visual.about.bg-about {
+    background-image: url('/public/images/bg_about.png');
+}
+.sub-visual.business.bg-business {
+    background-image: url('/public/images/bg_business.png');
+}
+.sub-visual.bg-hr{
+    background: #000;
+    filter: invert(1);
+}
+.sub-visual.bg-news{
+    background: #030303;
+    filter: invert(1);
+}
+.sub-visual.sub-board.bg-news ~ .tab-menu{
+    background: #f9f9f9;
+}
+.sub-visual.sub-board.bg-news ~ .tab-menu .inner a{
+    background: #fff;
+}
+.sub-visual.sub-board{
+    padding:18vh 0 5vh;
+}
+.sub-visual.sub-board ul li a{
+    opacity: 0.5;
+}
+.sub-visual.sub-board ~ .tab-menu{
+    padding-bottom: 6vh;
+    height: auto;
+    background: none;
+}
+.sub-visual.sub-board ~ .tab-menu .inner{
+    padding: 0 20px;
+    gap: 1vw;
+    align-items: center;
+}
+.sub-visual.sub-board ~ .tab-menu .inner a{
+    margin: 0;
+    padding: 16px 56px;
+    background: #f9f9f9;
+    border-radius: 30px;
+    border-right: 0;
+    color: var(--grayColor3);
+}
+.sub-visual.sub-board ~ .tab-menu .inner a.active{
+    background: var(--mainColor);
+    color: var(--whiteColor);
+}
+
+
 
 @media (max-width: 767px) {
-    .sub-visual {
-        padding: 15vh 0 5vh;
+    .sub-visual{
+        padding: 10vh 0 5vh;
     }
     .sub-visual ul{
         justify-content: center;
@@ -45,5 +85,19 @@
     }
     .sub-visual ul li h1{
         margin-left: 0;
+    }
+
+    .sub-visual.sub-board{
+        padding: 15vh 0 3vh;
+    }
+    .sub-visual.sub-board ~ .tab-menu .inner{
+        justify-content: center;
+    }
+    .sub-visual.sub-board ~ .tab-menu .inner a{
+        max-width: 140px;
+        padding: 12px 0;
+    }
+    .sub-visual.sub-board ~ .tab-menu{
+        padding-bottom: 4vh;
     }
 }

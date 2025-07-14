@@ -5,9 +5,9 @@ import './Header.css';
 
 const menuItems = [
     { name: 'KS소개', path: '/about' },
-    { name: '사업분야', path: '/business/rentcar' },
+    { name: '사업분야', path: '/business' },
     { name: '뉴스룸', path: '/news' },
-    { name: '채용', path: '/hr/info' }
+    { name: '채용', path: '/hr' }
 ];
 
 const Header = () => {

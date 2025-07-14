@@ -1,5 +1,5 @@
 import './Business.css';
-import { NavLink, Routes, Route } from 'react-router-dom';
+import { NavLink, Routes, Route, Navigate } from 'react-router-dom';
 import Rentcar from './business/Rentcar';
 import Purchase from './business/Purchase';
 import Export from './business/Export';
@@ -23,6 +23,7 @@ const Business = () => {
       </nav>
 
       <Routes>
+        <Route index element={<Navigate to="rentcar" replace />} />
         <Route path="rentcar" element={<Rentcar />} />
         <Route path="purchase" element={<Purchase />} />
         <Route path="export" element={<Export />} />
