@@ -2,8 +2,6 @@
 import './Main.css';
 import { Link } from 'react-router-dom';
 import CommonSwiper from '../components/commonSwiper';
-
-
 import useScrollFadeIn from '../hooks/useScrollFadeIn';
 
 
@@ -48,9 +46,6 @@ const newSlides = [
 const Main = () => {
     useScrollFadeIn();
     
-      
-      
-
     return (
     <>
         <section className="visual pin-me">
@@ -231,10 +226,10 @@ const Main = () => {
                     <dl className="flex-center">
                         <dt>
                             <a href="https://play.google.com/store/apps/details?id=your.app.id" target="_blank" rel="noopener noreferrer">
-                                <img className="img-responsive" src="/images/img_googleplay.svg" alt='구글플레이 다운로드'></img>
+                                <img className="img-responsive" src="/images/img_googleplay.svg" alt="구글플레이 다운로드"></img>
                             </a>
                             <a href="https://apps.apple.com/kr/app/your-app-id" target="_blank" rel="noopener noreferrer">
-                                <img className="img-responsive" src="/images/img_appstore.svg" alt='앱스토어 다운로드'></img>
+                                <img className="img-responsive" src="/images/img_appstore.svg" alt="앱스토어 다운로드"></img>
                             </a>
                         </dt>
                         <dd>

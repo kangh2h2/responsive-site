@@ -61,6 +61,7 @@
 .ct-01 > span{
     display: block;
     position: absolute;
+    z-index: -1;
 }
 .ct-01 > span.img-k{
     left: 10vw;

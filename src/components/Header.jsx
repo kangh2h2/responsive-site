@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
 
 const menuItems = [
-    { name: 'KS소개', path: '/About' },
-    { name: '사업분야', path: '/Business' },
-    { name: '뉴스룸', path: '/News' },
-    { name: '채용', path: '/Hr' }
+    { name: 'KS소개', path: '/about' },
+    { name: '사업분야', path: '/business/rentcar' },
+    { name: '뉴스룸', path: '/news' },
+    { name: '채용', path: '/hr/info' }
 ];
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -53,10 +54,13 @@ const Header = () => {
     </ul>
   );
 
+  const currentMenu = menuItems.find(item => location.pathname.startsWith(item.path));
+  const isRecruitOrNews = currentMenu && (currentMenu.name === '채용' || currentMenu.name === '뉴스룸');
+
   if (isMobile === null) return null; // 렌더 보호
 
   return (
-    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+    <header className={`header ${scrolled ? 'scrolled' : ''} ${isRecruitOrNews ? 'navy' : ''}`}>
       <nav className={isMobile ? 'mobile-nav inner' : 'desktop-nav inner flex-center'}>
         <Link to="/" className="logo"><img className="img-responsive" src='/images/logo.svg' alt="로고"></img></Link>
         {isMobile ? (

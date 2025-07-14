@@ -24,6 +24,26 @@
 }
 .sub-visual ul li h1{
     margin-left: 3vw;
-    font-size: clamp(24px, 6vw, 40px);
+    font-size: clamp(30px, 6vw, 40px);
 }
 
+
+@media (max-width: 767px) {
+    .sub-visual {
+        padding: 15vh 0 5vh;
+    }
+    .sub-visual ul{
+        justify-content: center;
+        flex-direction: column;
+        gap: 2vh;
+    }
+    .sub-visual ul li a span{
+        margin: 0 6px 0 5px;   
+    }
+    .sub-visual ul li a img{
+        width: 6px;
+    }
+    .sub-visual ul li h1{
+        margin-left: 0;
+    }
+}

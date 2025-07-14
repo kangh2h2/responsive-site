@@ -134,15 +134,15 @@
     top: 0;
     right: 0;
     width: 274px;
-    height: 314px;;
+    height: 364px;;
     border-radius: 100px 0 100px 0;
     overflow: hidden;
 }
 .ac-04 .video-wrap video{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 @media (max-width: 767px) {
     .about-content h1{
