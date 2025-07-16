@@ -2,8 +2,7 @@
 import './Main.css';
 import { Link } from 'react-router-dom';
 import CommonSwiper from '../components/commonSwiper';
-import useScrollFadeIn from '../hooks/useScrollFadeIn';
-
+import useScrollEffect from '../hooks/useScrollEffect';
 
 const newSlides = [
     <div className="news-slider flex-center">
@@ -44,7 +43,7 @@ const newSlides = [
 
 
 const Main = () => {
-    useScrollFadeIn();
+    useScrollEffect();
     
     return (
     <>
@@ -246,7 +245,9 @@ const Main = () => {
     </>
     
     
-  );
+    );
+
+    
 };
 
 export default Main;

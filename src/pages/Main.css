@@ -15,6 +15,9 @@
     height: 100%;
     object-fit: cover;
 }
+.content{
+    background: #fff;
+}
 .txt-wrap{
     position: absolute;
     left: 0; right: 0;
