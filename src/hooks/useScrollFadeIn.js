@@ -20,7 +20,7 @@ const useScrollFadeIn = (selector = '.ani-up') => {
         stagger: 0.3, // ✅ 여기! 0.2초씩 순차 실행
         scrollTrigger: {
           trigger: targets[0], // 트리거 기준 하나만 설정
-          start: 'top 80%',
+          start: 'top 50%',
           toggleActions: 'play none none reset',
         },
       }

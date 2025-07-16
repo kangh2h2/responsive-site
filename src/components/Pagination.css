@@ -1,0 +1,21 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1.5vw;
+    margin-bottom: 12vh;
+}
+  
+.page-button {
+    font-size: clamp(14px, 2vw, 18px);
+    color: #666;
+    cursor: pointer;
+}
+  
+.page-button.active {
+    color: #000;
+}
+
+.page-button img{
+    width: 1vw;
+    min-width: 15px;
+}
