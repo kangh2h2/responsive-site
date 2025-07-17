@@ -1,9 +1,21 @@
 /* 공통 레이아웃 */
 .sub-visual {
     padding: 28vh 0 12vh;
-    background-size: cover;
-    background-position: center;
+    background-size: auto 100%;
+    background-position: center center;
     color: #fff;
+    transition: all 2s linear;
+    animation: bgscale 5s ease;
+}
+@keyframes bgscale{
+    0%{
+        background-size: auto 120%;
+        background-position: 20% center;
+    }
+    100%{
+        background-size: auto 100%;
+        background-position: center center;
+    }
 }
 .sub-visual ul li a span{
     display: inline-block;

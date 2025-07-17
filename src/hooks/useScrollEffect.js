@@ -1,34 +1,30 @@
 import { useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ScrollToPlugin from 'gsap/ScrollToPlugin';
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
-const useScrollEffect = ({
-  fadeSelector = '.ani-up',
-  snapSelector = '.pin-me',
-} = {}) => {
+const useScrollEffect = ({ fadeSelector = '.ani-up' } = {}) => {
   useLayoutEffect(() => {
-    // 기존 ScrollTrigger 전부 제거
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
-    // ✅ 페이드 인 애니메이션 처리
-    const fadeTargets = Array.from(document.querySelectorAll(fadeSelector));
+    const groups = document.querySelectorAll('section'); // ani-up을 감싸는 부모 그룹 기준
 
-    fadeTargets.forEach((target) => {
-      if (document.body.contains(target)) {
+    groups.forEach((group) => {
+      const targets = group.querySelectorAll(fadeSelector); // 예: .ani-up 여러 개
+      if (targets.length) {
         gsap.fromTo(
-          target,
-          { opacity: 0, y: 100 },
+          targets,
+          { opacity: 0, y: 50 },
           {
             opacity: 1,
             y: 0,
             duration: 0.8,
+            stagger: 0.2,
             ease: 'power2.out',
             scrollTrigger: {
-              trigger: target,
-              start: 'top 80%',
+              trigger: group,
+              start: 'top 50%',
               toggleActions: 'play none none reset',
             },
           }
@@ -36,35 +32,10 @@ const useScrollEffect = ({
       }
     });
 
-    // ✅ 섹션 스냅 이동 처리
-    const snapPanels = gsap.utils.toArray(snapSelector);
-
-    function goToSection(snapPanel) {
-        gsap.to(window, {
-            scrollTo: { y: snapPanel, autoKill: false },
-            duration: 0, // 스크롤 애니메이션 시간 설정
-            ease: "power2.out",
-        });
-    }
-
-    // 스냅 동작 설정
-    snapPanels.forEach((snapPanel) => {
-        ScrollTrigger.create({
-        trigger: snapPanel,
-        onEnter: () => goToSection(snapPanel),
-        onEnterBack: () => goToSection(snapPanel),
-        });
-    });
-
-
-    
- 
-
-    // ✅ 정리
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [fadeSelector, snapSelector]);
+  }, [fadeSelector]);
 };
 
 export default useScrollEffect;

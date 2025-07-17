@@ -1,4 +1,5 @@
 import CommonSwiper from '../../components/commonSwiper';
+import React, { Fragment } from 'react';
 
 const rentSlidesData = [
     {
@@ -24,13 +25,14 @@ const rentSlidesData = [
 ];
 
 const rentSlides = rentSlidesData.map(({ title, text }, idx) => (
-    <>
-        <h3 key={idx}>{title}</h3>
-        <div key={idx} className="rent-txt">
+    <Fragment key={idx}>
+        <h3>{title}</h3>
+        <div className="rent-txt">
             {text}
         </div>
-    </>
-))
+    </Fragment>
+));
+
 
 const Rentcar = () => (
     <>
@@ -38,7 +40,9 @@ const Rentcar = () => (
         <section className="rentcar-content rc-01">
             <div className="inner">
                 <div className="tit-wrap txt-center">
-                    <h3>신뢰와 혁신을 바탕으로 <b>최상의 신차 구매 경험</b>을 제공합니다.</h3>
+                    <h3 className="ani-hidden">
+                        <div className="ani-up">신뢰와 혁신을 바탕으로 <b>최상의 신차 구매 경험</b>을 제공합니다.</div>
+                    </h3>
                     <h1>
                         <span className="fc-g-3">고객 중심의</span>
                         <span className="fc-s"> 차량 구매 솔루션을</span>

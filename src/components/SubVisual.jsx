@@ -2,9 +2,10 @@
 import { Link } from 'react-router-dom';
 import './SubVisual.css';
 
+
 const SubVisual = ({ title, type = '', bgClass = '' }) => {
   return (
-    <div className={`sub-visual ${type} ${bgClass}`}>
+    <section className={`sub-visual ${type} ${bgClass}`}>
       <div className="inner">
           <ul className="flex-center">
             <li>
@@ -14,10 +15,10 @@ const SubVisual = ({ title, type = '', bgClass = '' }) => {
                 <i><img src="/images/ico_arrow_bold.svg" alt=""></img></i>
               </Link>
             </li>
-            <li><h1>{title}</h1></li>
+            <li className="ani-hidden"><h1 className="ani-up">{title}</h1></li>
           </ul>
       </div>
-    </div>
+    </section>
   );
   
 };
