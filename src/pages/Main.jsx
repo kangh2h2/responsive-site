@@ -236,7 +236,7 @@ const Main = () => {
                     <div className="interview-img ani-up">
                         <img className="img-responsive" src="/images/img_interview.png" alt="인터뷰 동영상 이미지"></img>
                     </div>
-                    <div className="hr-link flex-center ani-up">
+                    <div className="hr-link flex-center">
                         <span><b>3개</b>의 채용공고가 <b>진행 중</b> 입니다.</span>
                         <Link to="/hr/list" className="flex-center">전체보기 <img src="/images/ico_arrow_light.svg" alt="화살표"></img></Link>
                     </div>

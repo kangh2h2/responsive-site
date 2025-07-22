@@ -39,12 +39,16 @@ const Ads = () => (
         <section className="ads-content adc-01">
             <div className="inner">
                 <div className="tit-wrap txt-center">
-                    <h3>브랜드의 <b>새로운 출발점</b></h3>
-                    <h1>
-                        <span className="fc-g-3">매출을 만드는</span>
-                        <span className="fc-s"> 마케팅,</span><br />
-                        <span className="fc-m"> 우리는 </span>
-                        결과로 말합니다.
+                    <h3 className="ani-hidden">
+                        <div className="ani-up-sub">브랜드의 <b>새로운 출발점</b></div>
+                    </h3>
+                    <h1 className="ani-hidden">
+                        <div className="ani-up-sub">
+                            <span className="fc-g-3">매출을 만드는</span>
+                            <span className="fc-s"> 마케팅,</span><br />
+                            <span className="fc-m"> 우리는 </span>
+                            결과로 말합니다.
+                        </div>
                     </h1>
                 </div>
                 <div className="site-link flex-center">

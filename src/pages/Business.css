@@ -189,6 +189,7 @@
 .rc-02 .info-wrap{
     width: calc(100% - 740px);
     flex: 1;
+    overflow: hidden;
 }
 .rc-02 .info-wrap h1{
     font-size: clamp(30px, 4vw, 50px);      
@@ -280,7 +281,7 @@
 .pc-01 .txt-banner{
     position: relative;
     justify-content: center;
-    margin-top: 12vh;
+    margin: 12vh auto 0;
     height: 292px;
     line-height: 1.6;
     background: url('/public/images/purchase_bg_01.png') no-repeat center;
@@ -300,6 +301,7 @@
     height: 12vh;
     background: #ccc;
 }
+
 
 .pc-02{
     margin-top:12vh;
@@ -364,9 +366,76 @@
     color: var(--mainColor);
 }
 
+.ec-01 .graph-wrapper{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin: 10vh 0 20vh;
+}
+.ec-01 .graph-wrapper .left-txt{
+    margin-bottom: 10vh;
+    text-align: right;
+    font-size: clamp(9px, 2vw, 16px);
+    color: var(--grayColor2);
+    opacity: 0;
+}
+.ec-01 .graph-wrapper .right-txt{
+    margin-bottom: 15vh;
+    font-size: clamp(10px, 2vw, 20px);
+    color: var(--grayColor1);
+    opacity: 0;
+}
+.ec-01 .graph-wrapper .left-txt b{
+    display: block;
+    margin-top: 5px;
+    font-size: 2em;
+}
+.ec-01 .graph-wrapper .right-txt b{
+    display: block;
+    margin-top: 10px;
+    font-size: 2.5em;
+}
+.ec-01 .graph-box{
+    position: relative;
+    width: 50%;
+    max-width: 360px;
+    aspect-ratio: 360 / 321;
+}
+.ec-01 .graph-box .speech-bubble{
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    transform: translateX(-50%);
+    background: var(--grayColor1);
+    border-radius: 10px;
+    padding: 7px 14px;
+    font-size: clamp(10px, 2vw, 20px);
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--whiteColor);
+}
+.ec-01 .graph-box .speech-bubble:after{
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+    width: 8px;
+    height: 8px;
+    background: var(--grayColor1);
+}
+.ec-01 .graph-box .graph-tit{
+    padding-top: 30px;
+    border-top:1px solid #ccc;
+    font-size: clamp(18px, 2vw, 30px);
+    font-weight: 700;
+    text-align: center;
+    color: var(--grayColor1);
+}
+
 .ec-02{
-    margin-top: 12vh;
-    padding: 12vh 0;
+    padding: 15vh 0;
     background: url('/public/images/export_bg.png') no-repeat center;
     background-size: cover;
     color: var(--whiteColor);
@@ -417,6 +486,7 @@
 .ec-03 .content-box{
     display: flex;
     margin:15vh 0;
+    overflow: hidden;
 }
 .ec-03 .content-box .tit-box{
     padding:6vh 4vw;
@@ -599,6 +669,9 @@
     color: var(--mainColor);
 }
 
+
+
+
 @media (max-width: 767px) {
     .tab-menu{
         height: 40px;
@@ -757,6 +830,29 @@
         width: 100%;
     }
 
+    .ec-01 .graph-wrapper{
+        margin: 10vh 0 8vh;
+    }
+    .ec-01 .graph-wrapper .left-txt{
+        margin-bottom: 7vh;
+    }
+    .ec-01 .graph-wrapper .right-txt{
+        margin-bottom: 7vh;
+    }
+    .ec-01 .graph-box .speech-bubble{
+        top: -4px;
+        border-radius: 5px;
+        padding: 4px 8px;
+    }
+    .ec-01 .graph-box .speech-bubble:after{
+        bottom: -2px;
+        width: 4px;
+        height: 4px;
+    }
+    .ec-01 .graph-box .graph-tit{
+        padding-top: 15px;
+    }
+
     .ec-02 ul{
         flex-direction: column;
     }
@@ -856,5 +952,6 @@
     .adc-03 ul li h2{
         margin-top: 10px;
     }
-    
+
+
 }

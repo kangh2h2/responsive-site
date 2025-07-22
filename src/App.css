@@ -32,7 +32,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {display: block;}
 button, input, select, optgroup, textarea {font-family:'Pretendard', sans-serif;}
 button, label, a, ::-webkit-file-upload-button {cursor:pointer;}
-input, img { border: none; display: block; }
+input, img, svg { border: none; display: block; vertical-align: top; }
 input:focus, select:focus { outline: none; }
 em, i, address {font-style: normal;}
 ol, ul { list-style: none; }
@@ -85,7 +85,18 @@ strong, .ex-bold{font-weight: 700;}
 .ani-hidden {
     overflow: hidden;
 }
-
+.ani-up-sub{
+    transform: translateY(0);
+    animation: txtup 0.8s linear;
+}
+@keyframes txtup {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
   
 
 @media (max-width:767px) {
