@@ -9,12 +9,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const useScrollEffect = ({
   fadeSelector = '.ani-up',
+  downSelector = '.ani-down',
   leftSelector = '.ani-left',
   rightSelector = '.ani-right',
   scaleSelector = '.ani-scale',
   xscaleSelector = '.ani-xscale',
   yoyoSelector = '.ani-yoyo',
   countSelector = '.ani-count',
+  deps = [],
 } = {}) => {
   const { pathname } = useLocation();
 
@@ -26,6 +28,7 @@ const useScrollEffect = ({
     groups.forEach((group) => {
       const upTargets = group.querySelectorAll(fadeSelector);
       if (upTargets.length) {
+        gsap.set(upTargets, { opacity: 0, y: 50 });
         gsap.fromTo(
           upTargets,
           { opacity: 0, y: 50 },
@@ -44,11 +47,33 @@ const useScrollEffect = ({
         );
       }
 
+      const downTargets = group.querySelectorAll(downSelector);
+      if (downTargets.length) {
+        gsap.set(downTargets, { opacity: 0, y: -50 });
+        gsap.fromTo(
+          downTargets,
+          { opacity: 0, y: -50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: group,
+              start: 'top 60%',
+              toggleActions: 'play none none reset',
+            },
+          }
+        );
+      }
+
       const leftTargets = group.querySelectorAll(leftSelector);
       if (leftTargets.length) {
+        gsap.set(leftTargets, { opacity: 0, x: 100 });
         gsap.fromTo(
           leftTargets,
-          { opacity: 0, x: 50 },
+          { opacity: 0, x: 100 },
           {
             opacity: 1,
             x: 0,
@@ -66,9 +91,10 @@ const useScrollEffect = ({
 
       const rightTargets = group.querySelectorAll(rightSelector);
       if (rightTargets.length) {
+        gsap.set(rightTargets, { opacity: 0, x: -100 });
         gsap.fromTo(
           rightTargets,
-          { opacity: 0, x: -50 },
+          { opacity: 0, x: -100 },
           {
             opacity: 1,
             x: 0,
@@ -89,6 +115,7 @@ const useScrollEffect = ({
         scaleTargets.forEach((el) => {
           el.style.transformOrigin = 'top left';
         });
+        gsap.set(scaleTargets, { opacity: 0, scale: 0.5 });
         gsap.fromTo(
           scaleTargets,
           { opacity: 0, scale: 0.5 },
@@ -111,6 +138,7 @@ const useScrollEffect = ({
       const xscaleTargets = group.querySelectorAll(xscaleSelector);
       if (xscaleTargets.length) {
         xscaleTargets.forEach((el) => {
+          gsap.set(el, { width: '0%', opacity: 0 });
           const tl = gsap.timeline({
             scrollTrigger: {
               trigger: group,
@@ -134,6 +162,7 @@ const useScrollEffect = ({
           // 2. 내부 tit 요소 순차 애니메이션
           const titEls = el.querySelectorAll('.tit');
           titEls.forEach((tit) => {
+            gsap.set(tit, { opacity: 0, y: 30 });
             tl.fromTo(
               tit,
               { opacity: 0, y: 30 },
@@ -151,6 +180,7 @@ const useScrollEffect = ({
 
       const yoyoTargets = group.querySelectorAll(yoyoSelector);
       if (yoyoTargets.length) {
+        gsap.set(yoyoTargets, { y: 0 });
         gsap.fromTo(
           yoyoTargets,
           { y: 0 },
@@ -174,6 +204,7 @@ const useScrollEffect = ({
         countTargets.forEach((el) => {
           const finalValue = parseInt(el.dataset.count, 10);
           if (!isNaN(finalValue)) {
+            el.textContent = '0';
             const obj = { val: 0 };
             gsap.to(obj, {
               val: finalValue,
@@ -198,7 +229,7 @@ const useScrollEffect = ({
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [fadeSelector, leftSelector, rightSelector, scaleSelector, xscaleSelector, yoyoSelector, countSelector, pathname]);
+  }, [fadeSelector, downSelector, leftSelector, rightSelector, scaleSelector, xscaleSelector, yoyoSelector, countSelector, pathname, deps]);
 };
 
 export default useScrollEffect;

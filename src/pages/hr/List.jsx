@@ -45,12 +45,12 @@ function List() {
                     <div className="inner">
                           <h3>채용절차</h3>
                           <div>진행 중인 채용 포지션을 확인하시고 언제든지 편하게 지원해주세요.</div>
-                          <ol className="flex-center">
-                              <li>서류전형</li>
-                              <li>1차 면접</li>
-                              <li>임원 면접</li>
-                              <li>연봉 및 처우 협의</li>
-                              <li>채용 확정</li>
+                          <ol className="flex-center ani-up">
+                              <li className="ani-scale">서류전형</li>
+                              <li className="ani-scale">1차 면접</li>
+                              <li className="ani-scale">임원 면접</li>
+                              <li className="ani-scale">연봉 및 처우 협의</li>
+                              <li className="ani-scale">채용 확정</li>
                           </ol>
                     </div>
                 </section>

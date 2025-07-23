@@ -53,7 +53,7 @@ const officeSlides = officeSlidesData.map(({img_src}, idx) => (
 ))
 
 const interviewItems = interviewData.map(({ id, href, title }) => (
-    <li key={id}>
+    <li key={id} className="ani-up">
         <div className="interview-box">
             <iframe
                 src={href}
@@ -78,7 +78,7 @@ const interviewItems = interviewData.map(({ id, href, title }) => (
 ));
 
 const addressItems = addressData.map(({ id, img_src, address_txt, spot }) => (
-    <li key={id}>
+    <li key={id} className="ani-scale">
         <div className="img-box">
             <img src={img_src} alt="지점 이미지"></img>
         </div>
@@ -98,17 +98,17 @@ function Info() {
                     <div className="inner">
                         <h2>인재가 회사의<br />가장 중요한 자산입니다.</h2>
                         <ul className="flex-center txt-center">
-                            <li>
+                            <li className="ani-scale">
                                 <i><img className="img-responsive" src="/images/ico_hr_01.svg" alt="아이콘 1"></img></i>
                                 <h3>FREE</h3>
                                 <div>자유롭고 건강한 기업문화 추구</div>
                             </li>
-                            <li>
+                            <li className="ani-scale">
                                 <i><img className="img-responsive" src="/images/ico_hr_02.svg" alt="아이콘 2"></img></i>
                                 <h3>BEST</h3>
                                 <div>최선을 다해 이루는 경쟁력과 성과</div>
                             </li>
-                            <li>
+                            <li className="ani-scale">
                                 <i><img className="img-responsive" src="/images/ico_hr_03.svg" alt="아이콘 3"></img></i>
                                 <h3>PEOPLE</h3>
                                 <div>사람이 가장 소중한 함께 성장하는 기업</div>
@@ -119,9 +119,9 @@ function Info() {
 
                 <section className="info-content ic-02">
                     <div className="inner">
-                        <h2>KS오토플랜 <span className="fc-m">사옥</span>을 소개합니다.</h2>
-                        <div className="txt">KS는 쾌적한 업무 공간을 마련하여 임직원들의 업무 환경을 개선하기 위해 노력하고 있습니다.</div>
-                        <div className="officeSwiper">
+                        <h2 className="ani-up">KS오토플랜 <span className="fc-m">사옥</span>을 소개합니다.</h2>
+                        <div className="txt ani-up">KS는 쾌적한 업무 공간을 마련하여 임직원들의 업무 환경을 개선하기 위해 노력하고 있습니다.</div>
+                        <div className="officeSwiper ani-up">
                             <CommonSwiper
                                 slides={officeSlides}
                                 options={{
@@ -136,7 +136,7 @@ function Info() {
                             />
                         </div>
 
-                        <h2>KS인의 인터뷰</h2>
+                        <h2 className="ani-up">KS인의 인터뷰</h2>
                         <ul className="grid-wrap">
                             {interviewItems}
                         </ul>
@@ -145,7 +145,7 @@ function Info() {
 
                 <section className="info-content ic-03">
                     <div className="inner">
-                        <h2>오시는 길</h2>
+                        <h2 className="ani-up">오시는 길</h2>
                         <ul className="grid-wrap">
                             {addressItems}
                         </ul>
@@ -154,12 +154,12 @@ function Info() {
 
                 <section className="info-content ic-04">
                     <div className="inner">
-                        <h2>
+                        <h2 className="ani-up">
                             자동차 산업의 혁신적인 기업 KS그룹이
                             <span className="br"></span>
                             다양한 분야에서 역량을 갖춘 인재를 모십니다.
                         </h2>
-                        <Link to="/hr/list" className="flex-center">
+                        <Link to="/hr/list" className="flex-center ani-up">
                             입사 지원하기 <img src="/images/ico_arrow_light.svg" alt="화살표"></img>
                         </Link>
                     </div>

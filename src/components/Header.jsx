@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { gsap } from 'gsap';
 import './Header.css';
 
 
@@ -15,6 +16,12 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  const handleTopClick = () => {
+    gsap.killTweensOf(window);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.dispatchEvent(new Event('resetAnimations'));
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -86,7 +93,7 @@ const Header = () => {
       </div>
 
 
-      <button className="btn-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <button className="btn-to-top" onClick={handleTopClick}>
         ↑
       </button>
       

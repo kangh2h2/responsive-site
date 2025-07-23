@@ -1,5 +1,9 @@
 import CommonSwiper from '../../components/commonSwiper';
+import { useLayoutEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 
 const adsSlidesData = [
     {
@@ -34,106 +38,151 @@ const adsSlides = adsSlidesData.map(({ title, text_1, text_2, text_3 }, idx) => 
     </>
 ))
 
-const Ads = () => (
-    <>
-    <div className="business">
-        <section className="ads-content adc-01">
-            <div className="inner">
-                <div className="tit-wrap txt-center">
-                    <h3 className="ani-hidden">
-                        <div className="ani-up-sub">브랜드의 <b>새로운 출발점</b></div>
-                    </h3>
-                    <h1 className="ani-hidden">
-                        <div className="ani-up-sub">
-                            <span className="fc-g-3">매출을 만드는</span>
-                            <span className="fc-s"> 마케팅,</span><br />
-                            <span className="fc-m"> 우리는 </span>
-                            결과로 말합니다.
-                        </div>
+const Ads = () => {
+    useLayoutEffect(() => {
+        setTimeout(() => {
+          const groups = document.querySelectorAll('.round-txt-box');
+      
+          groups.forEach((group, index) => {
+            const text = group.querySelector('.round-txt');
+            const circle = group.querySelector('.circle');
+            if (!text || !circle) return;
+      
+            const isReverse = index === 1;
+      
+            gsap.set(circle, {
+              left: isReverse ? '95%' : '-5%',
+              opacity: 0,
+            });
+      
+            // ✅ 타임라인 생성
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: group,
+                start: 'top center',
+                toggleActions: 'play none none reset',
+              },
+            });
+      
+            // 1. 텍스트 올라오기
+            tl.fromTo(
+              text,
+              { opacity: 0, y: 50 },
+              { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+            );
+      
+            // 2. 텍스트가 끝난 뒤 원 이동
+            tl.to(circle, {
+              left: isReverse ? '-5%' : '95%',
+              opacity: 1,
+              duration: 2,
+              ease: 'power2.out',
+            }); // 0.2초 쉬고 실행
+          });
+
+        }, 50);
+    }, []);
+      
+      
+
+    return (
+        <div className="business">
+            <section className="ads-content adc-01">
+                <div className="inner">
+                    <div className="tit-wrap txt-center">
+                        <h3 className="ani-hidden">
+                            <div className="ani-up-sub">브랜드의 <b>새로운 출발점</b></div>
+                        </h3>
+                        <h1 className="ani-hidden">
+                            <div className="ani-up-sub">
+                                <span className="fc-g-3">매출을 만드는</span>
+                                <span className="fc-s"> 마케팅,</span><br />
+                                <span className="fc-m"> 우리는 </span>
+                                결과로 말합니다.
+                            </div>
+                        </h1>
+                    </div>
+                    <div className="site-link flex-center ani-up">
+                        <a href="https://daruda-ad.com" target="_blank" rel="noopener noreferrer">
+                            <img src="/images/logo_daruda.svg" alt="마케팅을 다루다 바로가기"></img>
+                            마케팅을 다루다
+                        </a>
+                        <a href="https://place.daruda-ad.com" target="_blank" rel="noopener noreferrer">
+                            <img src="/images/logo_dplace.svg" alt="다루다 플레이스 바로가기"></img>
+                            플레이스 광고
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section className="ads-content adc-02">
+                <div className="inner flex-center">
+                    <div className="adsSwiper ani-left">
+                        <CommonSwiper
+                            slides={adsSlides}
+                            options={{
+                                effect: "fade",
+                                slidesPerView: 1,
+                                pagination: {
+                                    clickable: true,
+                                    renderBullet: function (index, className) {
+                                        // 두 자리 숫자 형식으로 '01', '02', '03'처럼 만들기
+                                        const number = (index + 1).toString().padStart(2, '0');
+                                        return '<span class="' + className + '">' + number + '</span>';
+                                    },
+                                },
+                                autoplay: {
+                                    delay: 4000,
+                                    disableOnInteraction: false,
+                                },
+                                loop: true,
+                            }}
+                        />
+                    </div>
+                    <div className="sns-img ani-left">
+                        <img className="img-responsive ani-yoyo" src="/images/ads_bg_01.png" alt="배경 이미지"></img>
+                    </div>
+                </div>
+            </section>
+
+            <section className="ads-content adc-03">
+                <div className="inner">
+                    <div className="round-txt-box bg-01">
+                        <div className="round-txt"><span className="circle"></span>작은 브랜드라도 강한 존재감을 가질 수 있도록,</div>
+                    </div>
+                    <div className="round-txt-box bg-02">
+                        <div className="round-txt"><span className="circle"></span>완성도 높은 콘텐츠와 정교한 전략으로 시장을 장악합니다.</div>
+                    </div>
+                    <div className="round-txt-box bg-03">
+                        <div className="round-txt"><span className="circle"></span>우리는 보이지 않는 브랜드를, 선택 받는 브랜드로 만듭니다.</div>
+                    </div>
+
+                    <h1 className="ani-up">
+                        우리의 광고는 말이 아니라,<br />결과로 증명합니다.
                     </h1>
+                    <ul className="flex-center">
+                        <li>
+                            <div>Clients</div>
+                            <h2><span class="ani-count" data-count="800">0</span>+</h2>
+                        </li>
+                        <li>
+                            <div>Channel</div>
+                            <h2><span class="ani-count" data-count="40">0</span>+</h2>
+                        </li>
+                        <li>
+                            <div>Products</div>
+                            <h2><span class="ani-count" data-count="120">0</span>+</h2>
+                        </li>
+                        <li>
+                            <div>Members</div>
+                            <h2><span class="ani-count" data-count="80">0</span>+</h2>
+                        </li>
+                    </ul>
                 </div>
-                <div className="site-link flex-center ani-up">
-                    <a href="https://daruda-ad.com" target="_blank" rel="noopener noreferrer">
-                        <img src="/images/logo_daruda.svg" alt="마케팅을 다루다 바로가기"></img>
-                        마케팅을 다루다
-                    </a>
-                    <a href="https://place.daruda-ad.com" target="_blank" rel="noopener noreferrer">
-                        <img src="/images/logo_dplace.svg" alt="다루다 플레이스 바로가기"></img>
-                        플레이스 광고
-                    </a>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section className="ads-content adc-02">
-            <div className="inner flex-center">
-                <div className="adsSwiper ani-left">
-                    <CommonSwiper
-                        slides={adsSlides}
-                        options={{
-                            effect: "fade",
-                            slidesPerView: 1,
-                            pagination: {
-                                clickable: true,
-                                renderBullet: function (index, className) {
-                                    // 두 자리 숫자 형식으로 '01', '02', '03'처럼 만들기
-                                    const number = (index + 1).toString().padStart(2, '0');
-                                    return '<span class="' + className + '">' + number + '</span>';
-                                  },
-                            },
-                            autoplay: {
-                                delay: 4000,
-                                disableOnInteraction: false,
-                            },
-                            loop: true,
-                        }}
-                    />
-                </div>
-                <div className="sns-img ani-left">
-                    <img className="img-responsive ani-yoyo" src="/images/ads_bg_01.png" alt="배경 이미지"></img>
-                </div>
-            </div>
-        </section>
-
-        <section className="ads-content adc-03">
-            <div className="inner">
-                <div className="round-txt-box bg-01">
-                    <div className="ani-up"><span></span>작은 브랜드라도 강한 존재감을 가질 수 있도록,</div>
-                </div>
-                <div className="round-txt-box bg-02">
-                    <div className="ani-up"><span></span>완성도 높은 콘텐츠와 정교한 전략으로 시장을 장악합니다.</div>
-                </div>
-                <div className="round-txt-box bg-03">
-                    <div className="ani-up"><span></span>우리는 보이지 않는 브랜드를, 선택 받는 브랜드로 만듭니다.</div>
-                </div>
-
-                <h1 className="ani-up">
-                    우리의 광고는 말이 아니라,<br />결과로 증명합니다.
-                </h1>
-                <ul className="flex-center">
-                    <li>
-                        <div>Clients</div>
-                        <h2><span class="ani-count" data-count="800">0</span>+</h2>
-                    </li>
-                    <li>
-                        <div>Channel</div>
-                        <h2><span class="ani-count" data-count="40">0</span>+</h2>
-                    </li>
-                    <li>
-                        <div>Products</div>
-                        <h2><span class="ani-count" data-count="120">0</span>+</h2>
-                    </li>
-                    <li>
-                        <div>Members</div>
-                        <h2><span class="ani-count" data-count="80">0</span>+</h2>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-
-    </div>
-    </>
-);
+        </div>
+    );
+};
 
 export default Ads;

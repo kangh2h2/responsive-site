@@ -7,14 +7,14 @@ const About = () => (
     
     <section className="about-content ac-01 txt-center">
       <div className="inner">
-        <div className="line-01"></div>
-        <h3 className="fc-m">Korea Standard</h3>
-        <h1> 
+        <div className="line-01 ani-down"></div>
+        <h3 className="fc-m  ani-down">Korea Standard</h3>
+        <h1 className="ani-down"> 
           대한민국 모빌리티 산업의<br />
           표준을 새로 쓰다.
         </h1>
-        <div className="line-01 arrow"></div>
-        <div className="txt-01 fc-g-2">
+        <div className="line-01 arrow ani-down"></div>
+        <div className="txt-01 fc-g-2 ani-up">
           KS그룹은 2018년 인천에서 출발하여, 자동차 산업 전반을 아우르는 모빌리티 중심<br />
           기업군으로 성장해온 종합 그룹입니다.
         </div>

@@ -3,7 +3,9 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import CommonSwiper from '../components/commonSwiper';
 import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
+gsap.registerPlugin(ScrollToPlugin);
 
 const newSlides = [
     <div className="news-slider flex-center">
@@ -98,8 +100,19 @@ const Main = () => {
             }
         };
 
+        const handleReset = () => {
+            currentIndex = 0;
+            gsap.killTweensOf(window);
+        };
+
         window.addEventListener('wheel', handleWheel, { passive: false });
-        return () => window.removeEventListener('wheel', handleWheel);
+        window.addEventListener('resetAnimations', handleReset);
+
+        return () => {
+            window.removeEventListener('wheel', handleWheel);
+            window.removeEventListener('resetAnimations', handleReset);
+        };
+
     }, []);
 
 

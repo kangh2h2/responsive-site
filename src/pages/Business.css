@@ -540,6 +540,7 @@
 .adc-02{
     margin: 15vh 0;
     background: #F7F8FA;
+    overflow: hidden;
 }
 .adc-02 .inner{
     background: linear-gradient(to right, transparent 70%, #2F3540 1%);
@@ -610,11 +611,12 @@
     font-size: clamp(16px, 3vw, 36px);
     color: var(--whiteColor);
     text-align: center;
-    z-index: 0;
+    
 }
 .adc-03 .round-txt-box > div{
     display: inline-block;
     position: relative;
+    z-index: 0;
 }
 .adc-03 .round-txt-box span{
     display: block;
@@ -629,8 +631,7 @@
     z-index: -1;
 }
 .adc-03 .round-txt-box.bg-02 span{
-    left: auto;
-    right: -5%;
+    left: 95%;
 }
 .adc-03 .round-txt-box.bg-01{
     background: url('/public/images/ads_bg_02.png') no-repeat center;
@@ -940,8 +941,7 @@
         padding: 5vh 20px;
     }
     .adc-03 .round-txt-box span{
-        width: 40px;
-        height: 40px;
+        display: none;
     }
     .adc-03 h1{
         margin: 8vh 0 5vh;

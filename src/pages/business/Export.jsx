@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLocation } from 'react-router-dom';
@@ -19,8 +19,16 @@ const Export = () => {
     const balloonRef = useRef(null);
 
     const location = useLocation();
+    const [resetKey, setResetKey] = useState(0);
+
+    useEffect(() => {
+        const handleReset = () => setResetKey((prev) => prev + 1);
+        window.addEventListener('resetAnimations', handleReset);
+        return () => window.removeEventListener('resetAnimations', handleReset);
+    }, []);
 
     useLayoutEffect(() => {
+        ScrollTrigger.getAll().forEach(t => t.kill());
         const timer = setTimeout(() => {
             const path = pathRef.current;
             gsap.set([leftBarRef.current, rightBarRef.current], {
@@ -96,7 +104,6 @@ const Export = () => {
                 duration: 1,
             });
         
-            ScrollTrigger.refresh();
 
         }, 50);
         
@@ -104,7 +111,7 @@ const Export = () => {
             clearTimeout(timer);
             ScrollTrigger.getAll().forEach(t => t.kill());
         };
-    }, [location.pathname]);
+    }, [location.pathname, resetKey]);
       
 
     return (

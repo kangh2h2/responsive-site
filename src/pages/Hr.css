@@ -341,6 +341,7 @@
     .lc-01 ol li{
         width: 67px;
         height: 67px;
+        border: 2px solid var(--mainColor);
     }
     
     .lc-02{
