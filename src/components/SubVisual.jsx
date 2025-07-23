@@ -1,9 +1,21 @@
 // components/SubVisual.jsx
 import { Link } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import './SubVisual.css';
 
 
 const SubVisual = ({ title, type = '', bgClass = '' }) => {
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    const el = titleRef.current;
+    const timer = setTimeout(() => {
+      if (el) el.classList.remove('ani-up');
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className={`sub-visual ${type} ${bgClass}`}>
       <div className="inner">
@@ -15,7 +27,7 @@ const SubVisual = ({ title, type = '', bgClass = '' }) => {
                 <i><img src="/images/ico_arrow_bold.svg" alt=""></img></i>
               </Link>
             </li>
-            <li className="ani-hidden"><h1 className="ani-up">{title}</h1></li>
+            <li className="ani-hidden"><h1 ref={titleRef} className="ani-up">{title}</h1></li>
           </ul>
       </div>
     </section>

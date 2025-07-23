@@ -12,6 +12,7 @@ const useScrollEffect = ({
   rightSelector = '.ani-right',
   scaleSelector = '.ani-scale',
   xscaleSelector = '.ani-xscale',
+  yoyoSelector = '.ani-yoyo',
 } = {}) => {
   const { pathname } = useLocation();
 
@@ -146,6 +147,25 @@ const useScrollEffect = ({
         });
       }
 
+      const yoyoTargets = group.querySelectorAll(yoyoSelector);
+      if (yoyoTargets.length) {
+        gsap.fromTo(
+          yoyoTargets,
+          { y: 0 },
+          {
+            y: -15,
+            repeat: -1,
+            yoyo: true,
+            duration: 1,
+            ease: 'sine.inOut',
+            scrollTrigger: {
+              trigger: group,
+              start: 'top 60%',
+              toggleActions: 'play none none reset',
+            },
+          }
+        );
+      }
 
       
     });
@@ -154,7 +174,7 @@ const useScrollEffect = ({
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [fadeSelector, leftSelector, rightSelector, scaleSelector, xscaleSelector, pathname]);
+  }, [fadeSelector, leftSelector, rightSelector, scaleSelector, xscaleSelector, yoyoSelector, pathname]);
 };
 
 export default useScrollEffect;

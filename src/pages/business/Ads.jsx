@@ -51,7 +51,7 @@ const Ads = () => (
                         </div>
                     </h1>
                 </div>
-                <div className="site-link flex-center">
+                <div className="site-link flex-center ani-up">
                     <a href="https://daruda-ad.com" target="_blank" rel="noopener noreferrer">
                         <img src="/images/logo_daruda.svg" alt="마케팅을 다루다 바로가기"></img>
                         마케팅을 다루다
@@ -66,7 +66,7 @@ const Ads = () => (
 
         <section className="ads-content adc-02">
             <div className="inner flex-center">
-                <div className="adsSwiper">
+                <div className="adsSwiper ani-left">
                     <CommonSwiper
                         slides={adsSlides}
                         options={{
@@ -88,8 +88,8 @@ const Ads = () => (
                         }}
                     />
                 </div>
-                <div className="sns-img">
-                    <img className="img-responsive" src="/images/ads_bg_01.png" alt="배경 이미지"></img>
+                <div className="sns-img ani-left">
+                    <img className="img-responsive ani-yoyo" src="/images/ads_bg_01.png" alt="배경 이미지"></img>
                 </div>
             </div>
         </section>
