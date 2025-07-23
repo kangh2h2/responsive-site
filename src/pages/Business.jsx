@@ -7,6 +7,8 @@ import Ads from './business/Ads';
 
 import SubVisual from "../components/SubVisual";
 
+
+
 const Business = () => {
   return (
     <>
@@ -29,6 +31,7 @@ const Business = () => {
         <Route path="export" element={<Export />} />
         <Route path="ads" element={<Ads />} />
       </Routes>
+
     </>
   );
 };

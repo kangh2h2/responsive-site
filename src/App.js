@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+
 import ScrollManager from './components/ScrollManager';
 
 import Main from './pages/Main';
@@ -17,8 +18,9 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-      <ScrollManager />
+    
       <Header />
+
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
@@ -26,7 +28,11 @@ function App() {
         <Route path="/news/*" element={<News />} />
         <Route path="/hr/*" element={<Hr />} />
       </Routes>
+
       <Footer />
+
+      <ScrollManager />
+
     </BrowserRouter>
   );
 }

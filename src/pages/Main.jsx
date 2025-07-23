@@ -1,12 +1,9 @@
 import './Main.css';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { gsap } from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import CommonSwiper from '../components/commonSwiper';
-import useScrollEffect from '../hooks/useScrollEffect';
+import { gsap } from 'gsap';
 
-gsap.registerPlugin(ScrollToPlugin);
 
 const newSlides = [
     <div className="news-slider flex-center">
@@ -68,7 +65,6 @@ const logoImages = [
 ];
 
 const Main = () => {
-    useScrollEffect();
 
     const sectionsRef = useRef([]);
 

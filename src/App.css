@@ -32,7 +32,8 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {display: block;}
 button, input, select, optgroup, textarea {font-family:'Pretendard', sans-serif;}
 button, label, a, ::-webkit-file-upload-button {cursor:pointer;}
-input, img, svg { border: none; display: block; vertical-align: top; }
+input, img, svg { border: none; display: block; }
+img, svg{ vertical-align: top; }
 input:focus, select:focus { outline: none; }
 em, i, address {font-style: normal;}
 ol, ul { list-style: none; }
@@ -87,7 +88,7 @@ strong, .ex-bold{font-weight: 700;}
 }
 .ani-up-sub{
     transform: translateY(0);
-    animation: txtup 0.8s linear;
+    animation: txtup 0.6s linear;
 }
 @keyframes txtup {
     0% {

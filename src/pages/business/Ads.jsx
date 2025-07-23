@@ -1,5 +1,6 @@
 import CommonSwiper from '../../components/commonSwiper';
 
+
 const adsSlidesData = [
     {
         title: '바이럴 마케팅',
@@ -97,34 +98,34 @@ const Ads = () => (
         <section className="ads-content adc-03">
             <div className="inner">
                 <div className="round-txt-box bg-01">
-                    <span></span>작은 브랜드라도 강한 존재감을 가질 수 있도록,
+                    <div className="ani-up"><span></span>작은 브랜드라도 강한 존재감을 가질 수 있도록,</div>
                 </div>
                 <div className="round-txt-box bg-02">
-                    <span></span>완성도 높은 콘텐츠와 정교한 전략으로 시장을 장악합니다.
+                    <div className="ani-up"><span></span>완성도 높은 콘텐츠와 정교한 전략으로 시장을 장악합니다.</div>
                 </div>
                 <div className="round-txt-box bg-03">
-                    <span></span>우리는 보이지 않는 브랜드를, 선택 받는 브랜드로 만듭니다.
+                    <div className="ani-up"><span></span>우리는 보이지 않는 브랜드를, 선택 받는 브랜드로 만듭니다.</div>
                 </div>
 
-                <h1>
+                <h1 className="ani-up">
                     우리의 광고는 말이 아니라,<br />결과로 증명합니다.
                 </h1>
                 <ul className="flex-center">
                     <li>
                         <div>Clients</div>
-                        <h2>1800+</h2>
+                        <h2><span class="ani-count" data-count="800">0</span>+</h2>
                     </li>
                     <li>
                         <div>Channel</div>
-                        <h2>40+</h2>
+                        <h2><span class="ani-count" data-count="40">0</span>+</h2>
                     </li>
                     <li>
                         <div>Products</div>
-                        <h2>120+</h2>
+                        <h2><span class="ani-count" data-count="120">0</span>+</h2>
                     </li>
                     <li>
                         <div>Members</div>
-                        <h2>80+</h2>
+                        <h2><span class="ani-count" data-count="80">0</span>+</h2>
                     </li>
                 </ul>
             </div>

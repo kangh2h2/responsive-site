@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+
 const useScrollEffect = ({
   fadeSelector = '.ani-up',
   leftSelector = '.ani-left',
@@ -13,6 +14,7 @@ const useScrollEffect = ({
   scaleSelector = '.ani-scale',
   xscaleSelector = '.ani-xscale',
   yoyoSelector = '.ani-yoyo',
+  countSelector = '.ani-count',
 } = {}) => {
   const { pathname } = useLocation();
 
@@ -167,14 +169,36 @@ const useScrollEffect = ({
         );
       }
 
-      
+      const countTargets = group.querySelectorAll(countSelector);
+      if (countTargets.length) {
+        countTargets.forEach((el) => {
+          const finalValue = parseInt(el.dataset.count, 10);
+          if (!isNaN(finalValue)) {
+            const obj = { val: 0 };
+            gsap.to(obj, {
+              val: finalValue,
+              duration: 2,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 60%',
+                toggleActions: 'play none none reset',
+              },
+              onUpdate: () => {
+                el.textContent = Math.floor(obj.val).toLocaleString();
+              },
+            });
+          }
+        });
+      }
+    
     });
       
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [fadeSelector, leftSelector, rightSelector, scaleSelector, xscaleSelector, yoyoSelector, pathname]);
+  }, [fadeSelector, leftSelector, rightSelector, scaleSelector, xscaleSelector, yoyoSelector, countSelector, pathname]);
 };
 
 export default useScrollEffect;

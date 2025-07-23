@@ -604,7 +604,6 @@
 }
 
 .adc-03 .round-txt-box{
-    position: relative;
     margin-top: 5vh;
     padding: 8vh 0;
     border-radius: 200px;
@@ -613,17 +612,25 @@
     text-align: center;
     z-index: 0;
 }
+.adc-03 .round-txt-box > div{
+    display: inline-block;
+    position: relative;
+}
 .adc-03 .round-txt-box span{
     display: block;
     position: absolute;
     top: 50%;
-    left: 10%;
+    left: -5%;
     transform: translateY(-50%);
     width: 80px;
     height: 80px;
     border-radius: 100%;
     background: var(--mainColor);
     z-index: -1;
+}
+.adc-03 .round-txt-box.bg-02 span{
+    left: auto;
+    right: -5%;
 }
 .adc-03 .round-txt-box.bg-01{
     background: url('/public/images/ads_bg_02.png') no-repeat center;

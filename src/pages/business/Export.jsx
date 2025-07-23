@@ -1,118 +1,110 @@
-import { useEffect, useRef } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLocation } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
 
 const Export = () => {
-    const pathRef = useRef(null);
     const leftBarRef = useRef(null);
     const rightBarRef = useRef(null);
-
-    const leftOuterRef = useRef(null);  // 흰 점
-    const leftInnerRef = useRef(null);  // 파란 점
+    const leftOuterRef = useRef(null);
+    const leftInnerRef = useRef(null);
     const rightOuterRef = useRef(null);
     const rightInnerRef = useRef(null);
     const leftTxtRef = useRef(null);
     const rightTxtRef = useRef(null);
-
+    const pathRef = useRef(null);
     const balloonRef = useRef(null);
 
+    const location = useLocation();
 
-    useEffect(() => {
-        const path = pathRef.current;
-      
-        // 초기 상태 설정
-        gsap.set([leftBarRef.current, rightBarRef.current], {
-            scaleY: 0,
-            transformOrigin: 'bottom center',
-        });
-      
-        gsap.set(
-            [leftOuterRef.current, leftInnerRef.current, rightOuterRef.current, rightInnerRef.current],{
+    useLayoutEffect(() => {
+        const timer = setTimeout(() => {
+            const path = pathRef.current;
+            gsap.set([leftBarRef.current, rightBarRef.current], {
+                scaleY: 0,
+                transformOrigin: 'bottom center',
+            });
+            gsap.set(
+                [leftOuterRef.current, leftInnerRef.current, rightOuterRef.current, rightInnerRef.current],
+                {
+                  opacity: 0,
+                  scale: 0.5,
+                  transformOrigin: 'center',
+                }
+            );
+            gsap.set(path, {
+                strokeDasharray: '8 4',
+                strokeDashoffset: 1000,
                 opacity: 0,
-                scale: 0.5,
-                transformOrigin: 'center',
-            }
-        );
-      
-        gsap.set(path, {
-            strokeDasharray: '8 4',
-            strokeDashoffset: 1000,
-            opacity: 0,
-        });
+            });
+            gsap.set(balloonRef.current, {
+                opacity: 0,
+                y: 0,
+            });
 
-        gsap.set(balloonRef.current, {
-            opacity: 0,
-            y: 0,
-        });
-          
-      
-        const tl = gsap.timeline({
+            const tl = gsap.timeline({
                 scrollTrigger: {
-                trigger: '.ec-01',
-                start: 'top center',
-            },
-            defaults: { ease: 'power2.out' },
-        });
-      
-        tl
-        // 1. 그래프 바
-        .to(leftBarRef.current, { scaleY: 1, duration: 0.6 })
-        .to(rightBarRef.current, { scaleY: 1, duration: 0.6 })
-    
-        // 2. 점 등장 (왼쪽)
-        .to([leftOuterRef.current, leftInnerRef.current], {
-            opacity: 1,
-            scale: 1,
-            duration: 0.2,
-        }, '-=0.2')
-        .to([leftTxtRef.current], {
-            opacity: 1,
-            duration: 0.4,
-            stagger: 0.2,
-        })
-    
-        // 3. 점 등장 (오른쪽)
-        .to([rightOuterRef.current, rightInnerRef.current], {
-            opacity: 1,
-            scale: 1,
-            duration: 0.2,
-        }, '-=0.2')
-        .to([rightTxtRef.current], {
-            opacity: 1,
-            duration: 0.4,
-            stagger: 0.2,
-        })
-    
-        // 4. 선 등장 + 그려짐
-        .to(path, {
-            opacity: 1,
-            strokeDashoffset: 0,
-            duration: 1.5,
-        });
+                  trigger: '.ec-01',
+                  start: 'top center',
+                  toggleActions: 'play none none reset',
+                },
+                defaults: { ease: 'power2.out' },
+            });
 
-        tl.to(balloonRef.current, {
-            opacity: 1,
-            duration: 0.5,
-        }, '-=1');
+            tl
+            .to(leftBarRef.current, { scaleY: 1, duration: 0.6 })
+            .to(rightBarRef.current, { scaleY: 1, duration: 0.6 })
+            .to([leftOuterRef.current, leftInnerRef.current], {
+                opacity: 1,
+                scale: 1,
+                duration: 0.2,
+            }, '-=0.2')
+            .to([leftTxtRef.current], {
+                opacity: 1,
+                duration: 0.4,
+                stagger: 0.2,
+            })
+            .to([rightOuterRef.current, rightInnerRef.current], {
+              opacity: 1,
+                scale: 1,
+                duration: 0.2,
+            }, '-=0.2')
+            .to([rightTxtRef.current], {
+                opacity: 1,
+                duration: 0.4,
+                stagger: 0.2,
+            })
+            .to(path, {
+                opacity: 1,
+                strokeDashoffset: 0,
+                duration: 1.5,
+            });
 
-        gsap.to(balloonRef.current, {
-            y: -10,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-            duration: 1,
-        });
-          
-      
-        return () => ScrollTrigger.getAll().forEach(t => t.kill());
-    }, []);
-      
-      
-      
-      
+            tl.to(balloonRef.current, {
+                opacity: 1,
+                duration: 0.5,
+            }, '-=1');
+
+            gsap.to(balloonRef.current, {
+                y: -10,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+                duration: 1,
+            });
+        
+            ScrollTrigger.refresh();
+
+        }, 50);
+        
+        return () => {
+            clearTimeout(timer);
+            ScrollTrigger.getAll().forEach(t => t.kill());
+        };
+    }, [location.pathname]);
       
 
     return (
