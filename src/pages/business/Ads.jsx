@@ -1,5 +1,5 @@
 import CommonSwiper from '../../components/commonSwiper';
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -39,49 +39,64 @@ const adsSlides = adsSlidesData.map(({ title, text_1, text_2, text_3 }, idx) => 
 ))
 
 const Ads = () => {
+    const [resetKey, setResetKey] = useState(0);
+
+    useEffect(() => {
+        const handleReset = () => setResetKey((prev) => prev + 1);
+        window.addEventListener('resetAnimations', handleReset);
+        return () => window.removeEventListener('resetAnimations', handleReset);
+    }, []);
+    
     useLayoutEffect(() => {
-        setTimeout(() => {
-          const groups = document.querySelectorAll('.round-txt-box');
+        ScrollTrigger.getAll().forEach(t => t.kill());
+        const timer = setTimeout(() => {
+
+            const groups = document.querySelectorAll('.round-txt-box');
       
-          groups.forEach((group, index) => {
-            const text = group.querySelector('.round-txt');
-            const circle = group.querySelector('.circle');
-            if (!text || !circle) return;
-      
-            const isReverse = index === 1;
-      
-            gsap.set(circle, {
-              left: isReverse ? '95%' : '-5%',
-              opacity: 0,
+            groups.forEach((group, index) => {
+                const text = group.querySelector('.round-txt');
+                const circle = group.querySelector('.circle');
+                if (!text || !circle) return;
+        
+                const isReverse = index === 1;
+        
+                gsap.set(circle, {
+                left: isReverse ? '95%' : '-5%',
+                opacity: 0,
+                });
+        
+                // ✅ 타임라인 생성
+                const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: group,
+                    start: 'top center',
+                    toggleActions: 'play none none reset',
+                },
+                });
+        
+                // 1. 텍스트 올라오기
+                tl.fromTo(
+                text,
+                    { opacity: 0, y: 30 },
+                    { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+                );
+        
+                // 2. 텍스트가 끝난 뒤 원 이동
+                tl.to(circle, {
+                left: isReverse ? '-5%' : '95%',
+                opacity: 1,
+                duration: 1,
+                ease: 'power2.out',
+                });
             });
-      
-            // ✅ 타임라인 생성
-            const tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: group,
-                start: 'top center',
-                toggleActions: 'play none none reset',
-              },
-            });
-      
-            // 1. 텍스트 올라오기
-            tl.fromTo(
-              text,
-              { opacity: 0, y: 50 },
-              { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
-            );
-      
-            // 2. 텍스트가 끝난 뒤 원 이동
-            tl.to(circle, {
-              left: isReverse ? '-5%' : '95%',
-              opacity: 1,
-              duration: 2,
-              ease: 'power2.out',
-            }); // 0.2초 쉬고 실행
-          });
 
         }, 50);
-    }, []);
+        
+        return () => {
+            clearTimeout(timer);
+            ScrollTrigger.getAll().forEach(t => t.kill());
+        };
+    }, [resetKey]);
       
       
 

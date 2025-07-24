@@ -2,10 +2,8 @@ import './Main.css';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import CommonSwiper from '../components/commonSwiper';
-import { gsap } from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import useScrollEffect from '../hooks/useScrollEffect';
 
-gsap.registerPlugin(ScrollToPlugin);
 
 const newSlides = [
     <div className="news-slider flex-center">
@@ -68,58 +66,9 @@ const logoImages = [
 
 const Main = () => {
 
-    const sectionsRef = useRef([]);
-
-    useEffect(() => {
-        const sections = sectionsRef.current;
-        let currentIndex = 0;
-        let isAnimating = false;
-
-        const scrollToSection = (index) => {
-            isAnimating = true;
-            gsap.to(window, {
-            scrollTo: { y: sections[index], autoKill: false },
-            duration: 1,
-            ease: 'power2.inOut',
-            onComplete: () => {
-                isAnimating = false;
-            },
-            });
-        };
-
-        const handleWheel = (e) => {
-            if (isAnimating) return;
-
-            const direction = e.deltaY > 0 ? 1 : -1;
-            const nextIndex = currentIndex + direction;
-
-            if (nextIndex >= 0 && nextIndex < sections.length) {
-                e.preventDefault();
-                currentIndex = nextIndex;
-                scrollToSection(currentIndex);
-            }
-        };
-
-        const handleReset = () => {
-            currentIndex = 0;
-            gsap.killTweensOf(window);
-        };
-
-        window.addEventListener('wheel', handleWheel, { passive: false });
-        window.addEventListener('resetAnimations', handleReset);
-
-        return () => {
-            window.removeEventListener('wheel', handleWheel);
-            window.removeEventListener('resetAnimations', handleReset);
-        };
-
-    }, []);
-
-
-    const assignRef = (el, index) => {
-        sectionsRef.current[index] = el;
-    };
-
+    const sectionsRef = useRef([]); // fullpage 사용시 추가
+    useScrollEffect({}, sectionsRef); // fullpage 사용시 추가
+    
     // 자연스러운 무한 스크롤 리스트를 위한 useEffect 추가
     useEffect(() => {
         const list = document.querySelector(".rolling-list");
@@ -142,7 +91,7 @@ const Main = () => {
     
     return (
     <>
-        <section ref={(el) => assignRef(el, 0)} className="visual pin-me">
+        <section ref={el => sectionsRef.current[0] = el} className="visual">
             <div className="main-vod">
                 <video
                     src="/videos/ks_visual.mp4"
@@ -170,7 +119,7 @@ const Main = () => {
             </div>
         </section>
 
-        <section ref={(el) => assignRef(el, 1)} className="pin-me content ct-01">
+        <section ref={el => sectionsRef.current[1] = el} className="content ct-01">
             <span className="img-k"><img className="img-responsive" src="/images/main_k.png" alt=""></img></span>
             <span className="img-s"><img className="img-responsive" src="/images/main_s.png" alt=""></img></span>
             <div className="inner">
@@ -207,7 +156,7 @@ const Main = () => {
             </div>
         </section>
 
-        <section ref={(el) => assignRef(el, 2)} className="pin-me content ct-02">
+        <section ref={el => sectionsRef.current[2] = el} className="content ct-02">
             <div className="inner">
                 <h1 className="ani-up">KS그룹의 <span className="mbr"></span><b>희망찬 이야기들</b></h1>
                 <div className="newSwiper-wrap ani-up">
@@ -239,7 +188,7 @@ const Main = () => {
             </div>
         </section>
 
-        <section ref={(el) => assignRef(el, 3)} className="pin-me ct-03">
+        <section ref={el => sectionsRef.current[3] = el} className="ct-03">
             <div className="inner">
                 <div className="hr-wrap">
                     <div className="interview-img ani-up">

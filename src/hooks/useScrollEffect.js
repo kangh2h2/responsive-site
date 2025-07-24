@@ -1,23 +1,28 @@
 // useScrollEffect.jsx
 import { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+
 import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 
-const useScrollEffect = ({
-  fadeSelector = '.ani-up',
-  downSelector = '.ani-down',
-  leftSelector = '.ani-left',
-  rightSelector = '.ani-right',
-  scaleSelector = '.ani-scale',
-  xscaleSelector = '.ani-xscale',
-  yoyoSelector = '.ani-yoyo',
-  countSelector = '.ani-count',
-  deps = [],
-} = {}) => {
+const useScrollEffect = (options = {}, sectionsRef = null) => {
+  const {
+    fadeSelector = '.ani-up',
+    downSelector = '.ani-down',
+    leftSelector = '.ani-left',
+    rightSelector = '.ani-right',
+    scaleSelector = '.ani-scale',
+    xscaleSelector = '.ani-xscale',
+    yoyoSelector = '.ani-yoyo',
+    countSelector = '.ani-count',
+    deps = [],
+  } = options;
+
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {
@@ -208,11 +213,11 @@ const useScrollEffect = ({
             const obj = { val: 0 };
             gsap.to(obj, {
               val: finalValue,
-              duration: 2,
+              duration: 1,
               ease: 'power2.out',
               scrollTrigger: {
                 trigger: el,
-                start: 'top 60%',
+                start: 'top 80%',
                 toggleActions: 'play none none reset',
               },
               onUpdate: () => {
@@ -224,12 +229,57 @@ const useScrollEffect = ({
       }
     
     });
-      
+
+    /* fullpage scroll */
+    if (sectionsRef && sectionsRef.current && sectionsRef.current.length) {
+      let currentIndex = 0;
+      let isAnimating = false;
+
+      const scrollToSection = (index) => {
+        isAnimating = true;
+        gsap.to(window, {
+          scrollTo: { y: sectionsRef.current[index], autoKill: false },
+          duration: 1,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            isAnimating = false;
+          },
+        });
+      };
+
+      const handleWheel = (e) => {
+        if (isAnimating) return;
+
+        const direction = e.deltaY > 0 ? 1 : -1;
+        const nextIndex = currentIndex + direction;
+
+        if (nextIndex >= 0 && nextIndex < sectionsRef.current.length) {
+          e.preventDefault();
+          currentIndex = nextIndex;
+          scrollToSection(currentIndex);
+        }
+      };
+
+      const handleReset = () => {
+        currentIndex = 0;
+        gsap.killTweensOf(window);
+      };
+
+      window.addEventListener('wheel', handleWheel, { passive: false });
+      window.addEventListener('resetAnimations', handleReset);
+
+      return () => {
+        window.removeEventListener('wheel', handleWheel);
+        window.removeEventListener('resetAnimations', handleReset);
+      };
+    }
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [fadeSelector, downSelector, leftSelector, rightSelector, scaleSelector, xscaleSelector, yoyoSelector, countSelector, pathname, deps]);
+  }, [fadeSelector, downSelector, leftSelector, rightSelector, scaleSelector, xscaleSelector, yoyoSelector, countSelector, pathname, deps, sectionsRef]);
 };
+
+
 
 export default useScrollEffect;
