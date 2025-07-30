@@ -20,7 +20,15 @@ const Header = () => {
   const handleTopClick = () => {
     gsap.killTweensOf(window);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    window.dispatchEvent(new Event('resetAnimations'));
+
+    // 스크롤이 0이 된 후에만 resetAnimations 이벤트 발생
+    const checkScroll = () => {
+      if (window.scrollY === 0) {
+        window.dispatchEvent(new Event('resetAnimations'));
+        window.removeEventListener('scroll', checkScroll);
+      }
+    };
+    window.addEventListener('scroll', checkScroll);
   };
 
   useEffect(() => {

@@ -18,21 +18,17 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-    
-      <Header />
-
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/business/*" element={<Business />} />
-        <Route path="/news/*" element={<News />} />
-        <Route path="/hr/*" element={<Hr />} />
-      </Routes>
-
-      <Footer />
-
-      <ScrollManager />
-
+      <ScrollManager>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/business/*" element={<Business />} />
+          <Route path="/news/*" element={<News />} />
+          <Route path="/hr/*" element={<Hr />} />
+        </Routes>
+        <Footer />
+      </ScrollManager>
     </BrowserRouter>
   );
 }

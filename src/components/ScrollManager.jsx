@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import useScrollEffect from '../hooks/useScrollEffect';
 
-const ScrollManager = () => {
+export const ResetKeyContext = createContext(0);
+
+const ScrollManager = ({ children }) => {
   const { pathname } = useLocation();
   const [resetKey, setResetKey] = useState(0);
 
@@ -18,7 +20,11 @@ const ScrollManager = () => {
 
   useScrollEffect({ deps: [resetKey] });
 
-  return null;
+  return (
+    <ResetKeyContext.Provider value={resetKey}>
+      {children}
+    </ResetKeyContext.Provider>
+  );
 };
 
 export default ScrollManager;

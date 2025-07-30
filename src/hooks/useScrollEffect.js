@@ -213,11 +213,11 @@ const useScrollEffect = (options = {}, sectionsRef = null) => {
             const obj = { val: 0 };
             gsap.to(obj, {
               val: finalValue,
-              duration: 1,
+              duration: 0.8,
               ease: 'power2.out',
               scrollTrigger: {
                 trigger: el,
-                start: 'top 80%',
+                start: 'top 90%',
                 toggleActions: 'play none none reset',
               },
               onUpdate: () => {
@@ -227,7 +227,8 @@ const useScrollEffect = (options = {}, sectionsRef = null) => {
           }
         });
       }
-    
+
+      
     });
 
     /* fullpage scroll */

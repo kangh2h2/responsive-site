@@ -16,6 +16,10 @@
     margin-top: 40px;
     font-size: clamp(13px, 4vw, 26px);
 }
+.pin-group{
+    overflow: hidden;
+}
+
 
 .ac-01{
     padding-bottom: 15vh;
@@ -121,7 +125,7 @@
 }
 
 .ac-05{
-    padding: 15vh 0;
+    background: var(--whiteColor);
 }
 .ac-05 .inner{
     position: relative;
@@ -133,8 +137,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 274px;
-    height: 364px;;
+    width: 15vw;
+    height: 40vh;
     border-radius: 100px 0 100px 0;
     overflow: hidden;
 }
@@ -143,6 +147,25 @@
     height: 100%;
     object-fit: cover;
 }
+.ac-05 .video-wrap .video-txt{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    padding: 0 5vw;
+    width: 100%;
+    height: 100%;
+    line-height: 1.5;
+    font-size: clamp(24px, 4vw, 46px);
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    
+}
+.ac-05 .video-wrap .video-txt span{
+    opacity: 0;
+}
+
 
 @media (max-width: 767px) {
     .about-content h1{
