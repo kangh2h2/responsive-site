@@ -54,10 +54,10 @@ const useScrollEffect = (options = {}, sectionsRef = null) => {
 
       const downTargets = group.querySelectorAll(downSelector);
       if (downTargets.length) {
-        gsap.set(downTargets, { opacity: 0, y: -50 });
+        gsap.set(downTargets, { opacity: 0, y: -100 });
         gsap.fromTo(
           downTargets,
-          { opacity: 0, y: -50 },
+          { opacity: 0, y: -100 },
           {
             opacity: 1,
             y: 0,

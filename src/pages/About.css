@@ -1,20 +1,20 @@
 .about-content h1{
     margin-bottom: 40px;
     line-height: 1.5;
-    font-size: clamp(30px, 6vw, 50px);
+    font-size: clamp(24px, 6vw, 50px);
 }
 .about-content h3{
     margin: 20px 0 30px;
-    font-size: clamp(11px, 4vw, 24px);
+    font-size: clamp(11px, 3vw, 24px);
 }
 .about-content .txt-01{
     margin-top: 50px;
     line-height: 1.5;
-    font-size: clamp(12px, 4vw, 24px);
+    font-size: clamp(12px, 3vw, 24px);
 }
 .about-content .txt-02{
     margin-top: 40px;
-    font-size: clamp(13px, 4vw, 26px);
+    font-size: clamp(13px, 3vw, 26px);
 }
 .pin-group{
     overflow: hidden;
@@ -55,6 +55,7 @@
     transform: rotate(45deg);
 }
 .about-content.content{
+    overflow: hidden;
     color: var(--whiteColor);
 }
 .about-content.content.members{
@@ -135,8 +136,9 @@
 }
 .ac-05 .video-wrap{
     position: absolute;
-    top: 0;
+    top: 50%;
     right: 0;
+    transform: translateY(-50%);
     width: 15vw;
     height: 40vh;
     border-radius: 100px 0 100px 0;
@@ -160,13 +162,87 @@
     font-weight: 600;
     text-align: center;
     color: #fff;
-    
 }
-.ac-05 .video-wrap .video-txt span{
-    opacity: 0;
+
+.ac-06{
+    background: #333;
+}
+.ac-06 .venn-section {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+}
+
+.ac-06 .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 50vw;
+    max-width: 288px;
+    max-height: 288px;
+    line-height: 1;
+    aspect-ratio: 1 / 1;
+    border: 1px solid #666;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: clamp(12px, 4vw, 1.4rem);
+}
+.ac-06 .circle h2{
+    margin-top: 1.5vh;
+    font-size: clamp(24px, 6vw, 1.6em);
+}
+
+.ac-06 .trust {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.ac-06 .speed {
+    left: 0;
+    bottom: 0;
+    transform: none;
+}
+.ac-06 .action {
+    right: 0;
+    bottom: 0;
+    transform: none;
+}
+.ac-06 .intersection {
+    z-index: 10;
+    overflow: hidden;
+    background: var(--mainColor);
+    border:0;
+    font-size: clamp(24px, 6vw, 1.8em);
+}
+.ac-06 .circle.intersection h2{
+    margin-top: 2vh;
+    font-size: clamp(40px, 12vw, 3em);
 }
 
 
+
+@media (max-width: 1180px) {
+    .about-content.content.ac-05{
+        padding: 10vh 0;
+        height: auto;
+    }
+    .ac-05 .video-wrap{
+        min-height: 100vh;
+        border-radius: 0;
+    }
+    .about-content.ac-05 h1,
+    .about-content.ac-05 .txt-01{
+        padding-right: 15vw;
+    }
+}
 @media (max-width: 767px) {
     .about-content h1{
         margin-bottom: 20px;
@@ -206,6 +282,9 @@
     .ac-04 .banner-box .banner-txt h2{
         margin-top: 5px;
     }
+
+    
+    
 }
 
 
