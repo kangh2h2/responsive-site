@@ -30,10 +30,12 @@ body {
 }
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {display: block;}
-button, input, select, optgroup, textarea {font-family:'Pretendard', sans-serif;}
+button, input, select, optgroup, textarea {font-family:'Pretendard', sans-serif; border: none;}
+input::placeholder, textarea::placeholder{
+    color: var(--grayColor3);
+}
 button, label, a, ::-webkit-file-upload-button {cursor:pointer;}
-input, img, svg { border: none; display: block; }
-img, svg{ vertical-align: top; }
+img, svg { border: none; display: block; vertical-align: top;}
 input:focus, select:focus { outline: none; }
 em, i, address {font-style: normal;}
 ol, ul { list-style: none; }
@@ -97,6 +99,18 @@ strong, .ex-bold{font-weight: 700;}
     100% {
         transform: translateY(0);
     }
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 4px;                  /* 전체 스크롤바 너비 */
+}
+.scroll-container::-webkit-scrollbar-track {
+    background: transparent;         /* 트랙 색상 */
+    border-radius: 4px;
+}
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #ccc;         /* 스크롤 thumb 색상 */
+    border-radius: 4px;
 }
   
 

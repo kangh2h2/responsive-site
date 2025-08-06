@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 
 const listData = [
     {
@@ -20,7 +20,7 @@ const listData = [
 ];
 
 const listItems = listData.map(({ id, hr_tit, txt_1, txt_2, txt_3, txt_4 }) => (
-    <div className="hr-list-box" key={id}>
+    <Link to="/hr/detail" className="hr-list-box" key={id}>
         <div className="hr-info">
             <h4>{hr_tit}</h4>
             <div className="flex-center">
@@ -34,7 +34,7 @@ const listItems = listData.map(({ id, hr_tit, txt_1, txt_2, txt_3, txt_4 }) => (
             </div>
         </div>
         <div className="dday">D-10</div>
-    </div>
+    </Link>
 ));
 
 function List() {

@@ -34,12 +34,15 @@ footer .info-txt span{
     padding-right: 1vw;
     line-height: 1;
     border-right: 1px solid #fff;
+}footer .info-txt span:nth-child(4){
+    border-right: 0;
 }
 footer .info-txt .copyright{
     margin-top: 1vh;
     font-size: 0.9em;
     opacity: 0.5;
 }
+
 footer .sns-wrap{
     gap: 10px;
 }
@@ -56,5 +59,9 @@ footer .sns-wrap{
     footer .info-wrap{
         flex-direction: column;
         gap: 20px;
+    }
+    footer .policy-btn{
+        margin-top:10px;
+        font-size: 10px;
     }
 }
