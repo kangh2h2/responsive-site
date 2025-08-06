@@ -11,7 +11,7 @@ const SubVisual = ({ title, type = '', bgClass = '' }) => {
             <li>
               <Link to="/" className="flex-center">
                 <img src="/images/ico_home.svg" alt="홈으로"></img>
-                <span>home</span>
+                <span lang="en" translate="no">home</span>
                 <i><img src="/images/ico_arrow_bold.svg" alt=""></img></i>
               </Link>
             </li>

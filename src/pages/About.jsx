@@ -274,7 +274,7 @@ const About = () => {
       <section className="about-content ac-01 txt-center">
         <div className="inner">
           <div className="line-01 ani-down"></div>
-          <h3 className="fc-m  ani-down">Korea Standard</h3>
+          <h3 className="fc-m  ani-down" lang="en" translate="no">Korea Standard</h3>
           <h1 className="ani-down">
             대한민국 모빌리티 산업의<br />
             표준을 새로 쓰다.
@@ -325,19 +325,19 @@ const About = () => {
 
             <div className="venn-section">
               <div className="circle intersection">
-                <span>Beyond Mobility</span>
-                <h2>KS</h2>
+                <span lang="en" translate="no">Beyond Mobility</span>
+                <h2 lang="en" translate="no">KS</h2>
               </div>
               <div className="circle trust">
-                <span className="fc-s">trust</span>
+                <span className="fc-s" lang="en" translate="no">trust</span>
                 <h2>신뢰</h2>
               </div>
               <div className="circle speed">
-                <span className="fc-s">speed</span>
+                <span className="fc-s" lang="en" translate="no">speed</span>
                 <h2>속도</h2>
               </div>
               <div className="circle action">
-                <span className="fc-s">action</span>
+                <span className="fc-s" lang="en" translate="no">action</span>
                 <h2>실행력</h2>
               </div>
             </div>
@@ -378,7 +378,7 @@ const About = () => {
 
       <section className="about-content content ac-05">
         <div className="inner">
-          <h3 className="fc-s ani-txt-up">A New Standard</h3>
+          <h3 className="fc-s ani-txt-up" lang="en" translate="no">A New Standard</h3>
           <h1 className="fc-black ani-txt-up">
             <div className="fc-m">우리는 단순히</div>
             차량을 유통하는 기업이 아닌,

@@ -31,7 +31,7 @@ const Purchase = () => (
         <section className="purchase-content pc-01">
             <div className="inner">
                 <div className="tit-wrap txt-center ani-up">
-                    <h4>Customized Finance</h4>
+                    <h4 lang="en" translate="no">Customized Finance</h4>
                     <h2>
                         합리적인 가격과 맞춤형 금융 프로그램을 통해
                         <span className="br"></span>
@@ -109,7 +109,7 @@ const Purchase = () => (
         <section className="purchase-content pc-03">
             <div className="inner">
                 <div className="tit-box ani-up">
-                    <h4>Purchasing Department</h4>
+                    <h4 lang="en" translate="no">Purchasing Department</h4>
                     <h1>KS오토플랜 <span className="fc-black">매입사업부는</span></h1>
                     <div>
                         언제나 고객 만족을 최우선으로 생각하며,<br />

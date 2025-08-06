@@ -107,7 +107,7 @@ const Rentcar = () => (
                 </div>
                 <div className="info-wrap">
                     <h1 className="ani-left">
-                        <span className="fc-g-3">KS</span><br />
+                        <span className="fc-g-3" lang="en" translate="no">KS</span><br />
                         <span className="fc-g-2">자동차</span> 금융의<br />
                         <span className="fc-m">차별화</span>
                     </h1>

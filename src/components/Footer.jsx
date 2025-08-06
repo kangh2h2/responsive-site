@@ -9,7 +9,7 @@ function Footer() {
         <>
         <footer>
             <div className="inner">
-                <h1>KS Group</h1>
+                <h1 lang="en" translate="no">KS Group</h1>
                 <div className="adress-wrap">
                     <dl>
                         <dt className="bold">본사.</dt>
@@ -38,7 +38,7 @@ function Footer() {
                         <span>대표번호. <b>1833-2802</b></span>
                         <span>사업자 등록번호. <b>592-87-01120</b></span>
                         <span><button type="button" className="policy-btn fc-white bold" onClick={() => setPolicyOpen(true)}>개인정보처리방침</button></span>
-                        <div className="copyright">© 2025 KS-GROUP ALL RIGHTS RESERVED</div>
+                        <div className="copyright" lang="en" translate="no">© 2025 KS-GROUP ALL RIGHTS RESERVED</div>
                     </div>
                     <div className="sns-wrap flex-center">
                         <a href="https://youtube.com/@KS오토플랜" target="_blank" rel="noopener noreferrer"><img src="/images/ico_youtube.svg" alt="유투브"></img></a>

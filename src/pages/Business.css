@@ -229,7 +229,7 @@
     border-radius: 15px;
     color: var(--whiteColor);
     filter: invert(1) grayscale(1);
-    opacity: 0.3;
+    opacity: 0.2;
 }
 .rentSwiper .swiper-slide-active{
     opacity: 1;
@@ -904,6 +904,9 @@
         position: relative;
         margin: 8vh 0;
     }
+    .adc-02 .inner{
+        background: linear-gradient(to right, transparent 85%, #2F3540 1%);
+    }
     .adc-02 .sns-img{
         position: absolute;
         top: 20px;
@@ -952,12 +955,12 @@
     .adc-03 ul{
         margin-bottom: 8vh;
         flex-wrap: wrap;
-        gap: 4vw;
+        gap: 5vw;
     }
     .adc-03 ul li{
         width: 150px;
         height: 150px;
-        border-radius: 50px;
+        border-radius: 35px;
     }
     .adc-03 ul li h2{
         margin-top: 10px;

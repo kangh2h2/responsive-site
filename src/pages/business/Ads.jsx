@@ -177,19 +177,19 @@ const Ads = () => {
                     </h1>
                     <ul className="flex-center">
                         <li>
-                            <div>Clients</div>
+                            <div lang="en" translate="no">Clients</div>
                             <h2><span class="ani-count" data-count="800">0</span>+</h2>
                         </li>
                         <li>
-                            <div>Channel</div>
+                            <div lang="en" translate="no">Channel</div>
                             <h2><span class="ani-count" data-count="40">0</span>+</h2>
                         </li>
                         <li>
-                            <div>Products</div>
+                            <div lang="en" translate="no">Products</div>
                             <h2><span class="ani-count" data-count="120">0</span>+</h2>
                         </li>
                         <li>
-                            <div>Members</div>
+                            <div lang="en" translate="no">Members</div>
                             <h2><span class="ani-count" data-count="80">0</span>+</h2>
                         </li>
                     </ul>

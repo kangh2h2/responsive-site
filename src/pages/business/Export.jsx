@@ -224,7 +224,7 @@ const Export = () => {
             <section className="export-content ec-03">
                 <div className="inner">
                     <div class="tit-wrap txt-center">
-                        <h4 className="ani-up">Global Trading</h4>
+                        <h4 className="ani-up" lang="en" translate="no">Global Trading</h4>
                         <h2 className="ani-up">
                             단순한 중고차 수출 업체를 넘어 신뢰와 혁신을 <span class="br"></span>
                             기반으로 한 글로벌 자동차 트레이딩 기업으로 자리 잡고자 합니다.
@@ -247,7 +247,7 @@ const Export = () => {
                 <div className="inner">
                     <div className="content-box">
                         <div className="tit-box ani-right">
-                            <div className="fc-s">KS</div>
+                            <div className="fc-s" lang="en" translate="no">KS</div>
                             해외 수출의<br />
                             차별화
                             <div className="txt">

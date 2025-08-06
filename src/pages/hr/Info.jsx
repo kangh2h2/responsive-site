@@ -64,7 +64,7 @@ const interviewItems = interviewData.map(({ id, href, title }) => (
             ></iframe>
         </div>
         <dl className="flex-center">
-            <dt>Interview</dt>
+            <dt lang="en" translate="no">Interview</dt>
             <dd>영업부</dd>
         </dl>
         <a
@@ -83,7 +83,7 @@ const addressItems = addressData.map(({ id, img_src, address_txt, spot }) => (
             <img src={img_src} alt="지점 이미지"></img>
         </div>
         <div className="adress-box">
-            <h4>KS AUTOPLAN</h4>
+            <h4 lang="en" translate="no">KS AUTOPLAN</h4>
             <h3>{spot}</h3>
             <div>{address_txt}</div>
         </div>
@@ -100,17 +100,17 @@ function Info() {
                         <ul className="flex-center txt-center">
                             <li className="ani-scale">
                                 <i><img className="img-responsive" src="/images/ico_hr_01.svg" alt="아이콘 1"></img></i>
-                                <h3>FREE</h3>
+                                <h3 lang="en" translate="no">FREE</h3>
                                 <div>자유롭고 건강한 기업문화 추구</div>
                             </li>
                             <li className="ani-scale">
                                 <i><img className="img-responsive" src="/images/ico_hr_02.svg" alt="아이콘 2"></img></i>
-                                <h3>BEST</h3>
+                                <h3 lang="en" translate="no">BEST</h3>
                                 <div>최선을 다해 이루는 경쟁력과 성과</div>
                             </li>
                             <li className="ani-scale">
                                 <i><img className="img-responsive" src="/images/ico_hr_03.svg" alt="아이콘 3"></img></i>
-                                <h3>PEOPLE</h3>
+                                <h3 lang="en" translate="no">PEOPLE</h3>
                                 <div>사람이 가장 소중한 함께 성장하는 기업</div>
                             </li>
                         </ul>

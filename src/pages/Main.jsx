@@ -104,7 +104,7 @@ const Main = () => {
             </div>
             <div className="inner txt-wrap">
                 <h3 className="ani-hidden">
-                    <div className="ani-up">KS Group</div>
+                    <div className="ani-up" lang="en" translate="no">KS Group</div>
                 </h3>
                 <h1 className="ani-hidden">
                     <div className="ani-up">자동차부터 <span className="mbr"></span>마케팅까지</div>
@@ -123,7 +123,7 @@ const Main = () => {
             <span className="img-k"><img className="img-responsive" src="/images/main_k.png" alt=""></img></span>
             <span className="img-s"><img className="img-responsive" src="/images/main_s.png" alt=""></img></span>
             <div className="inner">
-                <h1 className="ani-up">새로운 혁신을 <span className="mbr"></span>선도하는 <b className="fc-m">KS</b></h1>
+                <h1 className="ani-up">새로운 혁신을 <span className="mbr"></span>선도하는 <strong className="fc-m" lang="en" translate="no">KS</strong></h1>
                 <div className="txt ani-up">최고의 전문성과 신뢰를 바탕으로 다양한 산업에서 혁신적인 솔루션을 제공합니다.</div>
                 <Link to="/business/rentcar" className="link-btn flex-center ani-up">
                     <div className="bold">사업분야 바로가기</div>
@@ -202,7 +202,7 @@ const Main = () => {
                 
                 <div className="tit-wrap">
                     <h5 className="ani-hidden">
-                        <div className="ani-up">KS Group</div>
+                        <div className="ani-up" lang="en" translate="no">KS Group</div>
                     </h5>
                     <h1 className="ani-hidden">
                         <div className="ani-up">
