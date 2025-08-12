@@ -241,7 +241,7 @@
 
 .search-bar{
     margin: 6vh 0 2vh;
-    padding: 20px 40px;
+    padding: 20px 30px;
     border: 2px solid #CFD5DF;
     border-radius: 15px;
 }
@@ -260,7 +260,7 @@
 .filter-options select{
     position: relative;
     flex: 1;
-    padding: 20px 40px;
+    padding: 20px 30px;
     border: 1px solid #CFD5DF;
     border-radius: 15px;
     font-size: clamp(12px, 3vw, 18px);
@@ -346,7 +346,7 @@
 .hr-detail .btn-wrap > *{
     flex: 1;
     padding: 15px 0;
-    max-width: 240px;
+    max-width: 255px;
     border-radius: 10px;
     font-size: clamp(14px, 2vw, 20px);
     font-weight: 700;
@@ -355,7 +355,7 @@
 }
 .hr-detail .btn-wrap{
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 .hr-detail .btn-wrap .list-btn{
     background: var(--grayColor2);
@@ -365,7 +365,7 @@
 }
 
 .hr-detail .popup .form-wrap{
-    padding: 30px;
+    padding: 40px;
     background: var(--subColor3);
     border-radius: 0 0 20px 20px;
 }
@@ -383,6 +383,9 @@
 }
 .hr-detail .popup .form-tit strong{
     margin-right: 5px;
+}
+.hr-detail .popup .btn-wrap{
+    gap: 10px;
 }
 .hr-detail .popup .btn-wrap > *{
     border-radius: 8px;
@@ -405,7 +408,7 @@
     position: relative;
     justify-content: center;
     margin: 0 auto;
-    width: 35%;
+    width: 30%;
     max-width: 140px;
     aspect-ratio: 1 / 1;
     background: #fff;
@@ -421,14 +424,24 @@
     left: 50%;
     top: 50%;
     transform: translateX(-46%) translateY(-50%);
-    width: 60%;
+    width: 55%;
     height: 3px;
     background: linear-gradient(to right, var(--mainColor), transparent);
     z-index: -1;
+    animation: gradient 2s infinite;
+}
+@keyframes gradient {
+    0% {
+        width: 7%;
+        left:30%
+    }
+    100% {
+        width: 55%;
+    }
 }
 .hr-detail .finish-wrap h1{
     margin: 4vh 0 2vh;
-    font-size: clamp(24px, 4vw, 40px);
+    font-size: clamp(24px, 4vw, 36px);
 }
 .hr-detail .finish-wrap ul{
     padding: 20px;
@@ -611,6 +624,7 @@
         height: 50dvh;
     }
     .hr-detail .popup .form-tit{
+        flex-wrap: wrap;
         margin-bottom: 5px;
         gap: 5px;
     }
@@ -618,7 +632,11 @@
         width: 5px;
         height: 5px;
     }
+    .hr-detail .btn-wrap{
+        gap: 10px;
+    }
     .hr-detail .btn-wrap > *{
         padding: 12px 0;
     }
+    
 }

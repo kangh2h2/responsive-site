@@ -1,66 +1,51 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Pagination from '../../components/Pagination';
+import { prRepo } from '../../repos';
 
-const prData = [
-    {
-      id: 1,
-      href: "https://www.youtube.com//embed/en5yw8FTRxw?si=QOcw9pzjgn8IYpBE",
-      title: "KS오토플랜 송도 2지점 개업식 스케치",
-      date: "2024-05-10",
-    },
-    // 추가 데이터...
-];
+const ITEMS_PER_PAGE = 9;
 
-function Pr() {
+export default function Pr() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rows, setRows] = useState([]);
+  const [total, setTotal] = useState(0);
+  const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 9;
-    
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = prData.slice(indexOfFirstItem, indexOfLastItem);
-    
-    const totalPages = Math.ceil(prData.length / itemsPerPage);
-    
-    return (
-        <div className="pr">
-            <div className="inner">
-                <div className="pr-list">
+  useEffect(() => {
+    prRepo.list(currentPage, ITEMS_PER_PAGE).then(({ items, total }) => {
+      setRows(items);
+      setTotal(total);
+    });
+  }, [currentPage]);
 
-                    {currentItems.map((item) => (
-                    <div className="pr-box">
-                        <div className="pr-youtube">
-                            <iframe
-                                src={item.href}
-                                title={item.title}
-                                frameBorder="0"
-                                allow="autoplay; encrypted-media"
-                                allowFullScreen
-                            ></iframe>
-                        </div>
-                        <a
-                            key={item.id}
-                            href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >
-                            <h3>{item.title}</h3>
-                            <div className="news-data">{item.date}</div>
-                        </a>
-
-                    </div>
-                    ))}
-                    
-                </div>
-
-                <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={setCurrentPage}
+  return (
+    <div className="pr">
+      <div className="inner">
+        <div className="pr-list">
+          {rows.map(item => (
+            <div className="pr-box" key={item.id}>
+              <div className="pr-youtube">
+                <iframe
+                  src={`https://www.youtube.com/embed/${item.youtubeId}`}
+                  title={item.title}
+                  frameBorder="0"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
                 />
+              </div>
+              <a href={`https://www.youtube.com/watch?v=${item.youtubeId}`} target="_blank" rel="noopener noreferrer">
+                <h3>{item.title}</h3>
+                <div className="news-data">{item.date}</div>
+              </a>
             </div>
+          ))}
         </div>
-    )
-}
 
-export default Pr
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </div>
+    </div>
+  );
+}
